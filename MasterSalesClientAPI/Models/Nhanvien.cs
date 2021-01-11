@@ -21,6 +21,7 @@ namespace MasterSalesClientAPI.Models
             Lichsuchucvus = new HashSet<Lichsuchucvu>();
             Phongbans = new HashSet<Phongban>();
             Taikhoans = new HashSet<Taikhoan>();
+            TuVanKhs = new HashSet<TuVanKh>();
         }
 
         public string Id { get; set; }
@@ -47,5 +48,6 @@ namespace MasterSalesClientAPI.Models
         public virtual ICollection<Lichsuchucvu> Lichsuchucvus { get; set; }
         public virtual ICollection<Phongban> Phongbans { get; set; }
         public virtual ICollection<Taikhoan> Taikhoans { get; set; }
+        public virtual ICollection<TuVanKh> TuVanKhs { get; set; }
     }
 }

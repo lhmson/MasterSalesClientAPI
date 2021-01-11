@@ -11,57 +11,47 @@ namespace MasterSalesClientAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MathangController : ControllerBase
+    public class CtPhieudathangController : ControllerBase
     {
         private readonly QLKinhDoanhContext _context;
 
-        public MathangController(QLKinhDoanhContext context)
+        public CtPhieudathangController(QLKinhDoanhContext context)
         {
             _context = context;
         }
 
-        // GET: api/Mathang
+        // GET: api/CtPhieudathang
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Mathang>>> GetMathangs()
+        public async Task<ActionResult<IEnumerable<CtPhieudathang>>> GetCtPhieudathangs()
         {
-            foreach (var mh in _context.Mathangs)
-            {
-                foreach (var x in _context.Nhacungcaps)
-                {
-                    if (mh.MaNcc.Equals(x.Id))
-                    {
-                        mh.MaNccNavigation = x;
-                    }
-                }
-            }
-            return await _context.Mathangs.ToListAsync();
+            return await _context.CtPhieudathangs.ToListAsync();
         }
 
-        // GET: api/Mathang/5
+        // GET: api/CtPhieudathang/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Mathang>> GetMathang(string id)
+        public async Task<ActionResult<CtPhieudathang>> GetCtPhieudathang(string id)
         {
-            var mathang = await _context.Mathangs.FindAsync(id);
+            var ctPhieudathang = await _context.CtPhieudathangs.FindAsync(id);
 
-            if (mathang == null)
+            if (ctPhieudathang == null)
             {
                 return NotFound();
             }
 
-            return mathang;
+            return ctPhieudathang;
         }
 
-        // PUT: api/Mathang/5
+        // PUT: api/CtPhieudathang/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMathang(string id, Mathang mathang)
+        public async Task<IActionResult> PutCtPhieudathang(string id, CtPhieudathang ctPhieudathang)
         {
-            if (id != mathang.Id)
+            if (id != ctPhieudathang.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(mathang).State = EntityState.Modified;
+            _context.Entry(ctPhieudathang).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +59,7 @@ namespace MasterSalesClientAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MathangExists(id))
+                if (!CtPhieudathangExists(id))
                 {
                     return NotFound();
                 }
@@ -82,19 +72,19 @@ namespace MasterSalesClientAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Mathang
+        // POST: api/CtPhieudathang
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Mathang>> PostMathang(Mathang mathang)
+        public async Task<ActionResult<CtPhieudathang>> PostCtPhieudathang(CtPhieudathang ctPhieudathang)
         {
-            _context.Mathangs.Add(mathang);
+            _context.CtPhieudathangs.Add(ctPhieudathang);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (MathangExists(mathang.Id))
+                if (CtPhieudathangExists(ctPhieudathang.Id))
                 {
                     return Conflict();
                 }
@@ -104,28 +94,28 @@ namespace MasterSalesClientAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMathang", new { id = mathang.Id }, mathang);
+            return CreatedAtAction("GetCtPhieudathang", new { id = ctPhieudathang.Id }, ctPhieudathang);
         }
 
-        // DELETE: api/Mathang/5
+        // DELETE: api/CtPhieudathang/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMathang(string id)
+        public async Task<IActionResult> DeleteCtPhieudathang(string id)
         {
-            var mathang = await _context.Mathangs.FindAsync(id);
-            if (mathang == null)
+            var ctPhieudathang = await _context.CtPhieudathangs.FindAsync(id);
+            if (ctPhieudathang == null)
             {
                 return NotFound();
             }
 
-            _context.Mathangs.Remove(mathang);
+            _context.CtPhieudathangs.Remove(ctPhieudathang);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MathangExists(string id)
+        private bool CtPhieudathangExists(string id)
         {
-            return _context.Mathangs.Any(e => e.Id == id);
+            return _context.CtPhieudathangs.Any(e => e.Id == id);
         }
     }
 }

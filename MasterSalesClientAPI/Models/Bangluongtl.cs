@@ -18,6 +18,7 @@ namespace MasterSalesClientAPI.Models
         public int? Thang { get; set; }
         public string MaPhong { get; set; }
         public bool? IsDeleted { get; set; }
+        public int? Nam { get; set; }
 
         public virtual Nhanvien MaKeToanNavigation { get; set; }
         public virtual Phongban MaPhongNavigation { get; set; }

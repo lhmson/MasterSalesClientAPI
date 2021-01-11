@@ -19,6 +19,7 @@ namespace MasterSalesClientAPI.Models
         public string MaPhong { get; set; }
         public decimal? HeSo { get; set; }
         public bool? IsDeleted { get; set; }
+        public int? Nam { get; set; }
 
         public virtual Phongban MaPhongNavigation { get; set; }
         public virtual Nhanvien MaTrgPbNavigation { get; set; }

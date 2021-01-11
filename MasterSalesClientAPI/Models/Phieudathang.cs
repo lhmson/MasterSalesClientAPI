@@ -19,6 +19,7 @@ namespace MasterSalesClientAPI.Models
         public decimal? ThanhTien { get; set; }
         public int? TrangThai { get; set; }
         public bool? IsDeleted { get; set; }
+        public string DiaChiNhan { get; set; }
 
         public virtual Khachhang MaKhNavigation { get; set; }
         public virtual ICollection<CtPhieudathang> CtPhieudathangs { get; set; }

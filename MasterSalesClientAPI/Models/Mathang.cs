@@ -21,9 +21,10 @@ namespace MasterSalesClientAPI.Models
         public string MaNhomMh { get; set; }
         public decimal? DonGia { get; set; }
         public bool? IsDeleted { get; set; }
+        public string MoTa { get; set; }
 
-        public virtual Nhacungcap Nhacungcap { get; set; }
-        public virtual Nhommathang Nhommathang { get; set; }
+        public virtual Nhacungcap MaNccNavigation { get; set; }
+        public virtual Nhommathang MaNhomMhNavigation { get; set; }
         public virtual ICollection<CtHoadon> CtHoadons { get; set; }
         public virtual ICollection<CtPhieudathang> CtPhieudathangs { get; set; }
     }
